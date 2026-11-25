@@ -75,7 +75,7 @@ class Visual:
 
     def desenhar_aviso(self, partida):
         cor = CORES[partida.vez]
-        if partida.velha:
+        if partida.trinca:
             frase = f"{partida.vez} venceu!"
         elif partida.encerrada:
             frase = "Deu velha!"
@@ -105,7 +105,7 @@ class Visual:
         for linha, coluna, casa in self.casas:
             simbolo = partida.tabuleiro[linha][coluna]
             interior = casa.inflate(-14, -14)
-            if (linha, coluna) in partida.velha:
+            if (linha, coluna) in partida.trinca:
                 pygame.draw.rect(self.janela, "#FAE5A3", interior, border_radius=14)
             elif not partida.encerrada and not simbolo and casa.collidepoint(mouse):
                 pygame.draw.rect(self.janela, FUNDO, interior, border_radius=14)
