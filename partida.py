@@ -1,5 +1,5 @@
 # As oito maneiras de fazer três em linha. Cada casa é (linha, coluna).
-VELHA = (
+TRINCA = (
     ((0, 0), (0, 1), (0, 2)),
     ((1, 0), (1, 1), (1, 2)),
     ((2, 0), (2, 1), (2, 2)),
@@ -16,7 +16,8 @@ class Partida:
         self.tabuleiro = [[""] * 3 for x_ in range(3)]
         self.vez = "X"
         self.encerrada = False
-        self.velha = ()
+        self.trinca = ()
+        self.jogadas = 0
 
     def jogar(self, linha, coluna):
         if not (0 <= linha < 3 and 0 <= coluna < 3):
@@ -30,7 +31,7 @@ class Partida:
         self.jogadas += 1
 
         # Conta as peças do jogador em cada linha, coluna ou diagonal.
-        for trio in VELHA:
+        for trio in TRINCA:
             pontos = 0
 
             for lin, col in trio:
@@ -38,7 +39,7 @@ class Partida:
                     pontos += 1
 
             if pontos == 3:
-                self.velha = trio
+                self.trinca = trio
                 self.encerrada = True
                 return
 
